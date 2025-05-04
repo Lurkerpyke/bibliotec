@@ -1,11 +1,28 @@
 import React from 'react'
+import BookOverview from './BookOverview';
+import BookCard from './BookCard';
 
-const BookList = () => {
+interface Props {
+    title: string;
+    books: Book[];
+    containerClassName?: string;
+};
+
+const BookList = ({ title, books, containerClassName }: Props) => {
+
+    if (books.length < 2) return;
+
     return (
-        <section>
-            <h2 className='font-sans text-4xl text-foreground'>Livros Populares</h2>
+        <section className={containerClassName}>
+            <h2 className='text-4xl text-foreground'>{title}</h2>
+
+            <ul className='mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10'>
+                {books.map((book) => (
+                    <BookCard key={book.title} {...book} />
+                ))}
+            </ul>
         </section>
     )
-}
+};
 
-export default BookList
+export default BookList;
