@@ -24,10 +24,10 @@
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.56.1",
+    "react-hook-form": "^7.56.2",
     "styled-components": "^6.1.17",
     "tailwind-merge": "^3.2.0",
-    "zod": "^3.24.3"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

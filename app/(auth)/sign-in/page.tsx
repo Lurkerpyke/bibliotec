@@ -1,11 +1,19 @@
-import { AuthForm } from '@/components/AuthForm'
-import { AuthSidebar } from '@/components/AuthSidebar'
+'use client';
 
-export default function SignInPage() {
-    return (
-        <div className="min-h-screen flex">
-            <AuthSidebar />
-            <AuthForm type="sign-in" />
-        </div>
-    )
-}
+import AuthForm from '@/components/AuthForm';
+import { signInSchema } from '@/lib/validations';
+import React from 'react';
+
+const page = () => (
+    <AuthForm
+        type='SIGN_IN'
+        schema={signInSchema}
+        defaultValues={{
+            email: '',
+            password: '',
+        }}
+        onSubmit={() => {}}
+    />
+)
+
+export default page;
