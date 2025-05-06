@@ -61,28 +61,30 @@ const AuthForm = <T extends FieldValues>({
                             key={field}
                             control={form.control}
                             name={field as Path<T>}
-                            render={({ field }) => (
+                            render={({ field, fieldState }) => (
                                 <FormItem>
-                                    <FormLabel className='capitalize'>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
+                                    <FormLabel className='capitalize'>
+                                        {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
+                                    </FormLabel>
                                     <FormControl>
-
                                         {field.name === 'universityCard' ? (
                                             <ImageUpload onFileChange={field.onChange} />
                                         ) : (
-                                                <Input
-                                                    required
-                                                    type={FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]}
-                                                    {...field}
-                                                    
-                                                />    
+                                            <Input
+                                                required
+                                                type={FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]}
+                                                {...field}
+                                            />
                                         )}
                                     </FormControl>
-                                    <FormMessage />
+                                    {/* Properly typed error message */}
+                                    <FormMessage>
+                                        {fieldState.error?.message as React.ReactNode}
+                                    </FormMessage>
                                 </FormItem>
                             )}
                         />
                     ))}
-
                     
                     <Button type="submit" className='bg-primary text-slate-800 hover:bg-background inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>
                         {isSignIn ? 'Entrar' : 'Criar conta'}
