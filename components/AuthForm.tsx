@@ -18,6 +18,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants';
 import ImageUpload from './ImageUpload';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface Props<T extends FieldValues> {
     schema: ZodType<T>;
@@ -34,15 +36,26 @@ const AuthForm = <T extends FieldValues>({
     onSubmit,
 }: Props<T>) => {
 
+    const router = useRouter();
     const isSignIn = type === 'SIGN_IN';
-    
+
     const form: UseFormReturn<T> = useForm({
         resolver: zodResolver(schema),
         defaultValues: defaultValues as DefaultValues<T>,
     })
 
     // 2. Define a submit handler.
-    const handleSubmit: SubmitHandler<T> = async (data) => { };
+    const handleSubmit: SubmitHandler<T> = async (data) => {
+        const result = await onSubmit(data);
+
+        if (result.success) {
+            toast.success(isSignIn ? 'Login realizado com sucesso!' : 'Cadastro realizado com sucesso!');
+
+            router.push('/');
+        } else {
+            toast.error(result.error || 'Ocorreu um erro ao realizar o login.');
+        }
+    };
 
 
     return (
@@ -85,7 +98,7 @@ const AuthForm = <T extends FieldValues>({
                             )}
                         />
                     ))}
-                    
+
                     <Button type="submit" className='bg-primary text-slate-800 hover:bg-background inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>
                         {isSignIn ? 'Entrar' : 'Criar conta'}
                     </Button>
@@ -94,7 +107,7 @@ const AuthForm = <T extends FieldValues>({
 
             <p className='text-center text-base font-medium'>
                 {isSignIn ? 'É novo aqui? ' : 'Já tem uma conta? '}
-                
+
                 <Link href={isSignIn ? '/sign-up' : '/sign-in'} className='text-primary font-bold'>
                     {isSignIn ? 'Crie uma conta' : 'Entre'}
                 </Link>

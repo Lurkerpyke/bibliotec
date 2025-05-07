@@ -33,7 +33,8 @@ const ImageUpload = ({ onFileChange }: { onFileChange: (file: { filePath: string
   const onSuccess = (res: any) => {
     console.log('Upload Success:', res);
     setFile(res);
-    onFileChange({ filePath: res.filePath });
+    onFileChange(res.filePath); // em vez de { filePath: res.filePath }
+
     // toast.success('Upload successful!');
   };
 
@@ -79,7 +80,7 @@ const ImageUpload = ({ onFileChange }: { onFileChange: (file: { filePath: string
             alt={file.filePath}
             path={file.filePath}
             width={500}
-            height={500}
+            height={300}
           />
         )}
       </div>
