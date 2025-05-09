@@ -1,12 +1,14 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn, getInitials } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import Image from 'next/image'
+import { Avatar, AvatarFallback } from './ui/avatar'
+import { Session } from 'next-auth'
 
-const Header = () => {
+const Header = ({session}: {session: Session}) => {
 
   const pathname = usePathname();
 
@@ -23,9 +25,18 @@ const Header = () => {
             'text-base cursor-pointer capitalize',
             pathname === 'livraria' ? 'text-primary-foreground' : 'text-primary-foreground')}>livraria</Link>
         </li>
+        <li>
+          <Link href='/my-profile'>
+            <Avatar>
+              <AvatarFallback className='text-slate-700 bg-amber-100'>
+                {getInitials(session?.user?.name || 'IN')}
+              </AvatarFallback>
+            </Avatar>
+          </Link>
+        </li>
       </ul>
     </header>
   )
-}
+};
 
-export default Header
+export default Header;

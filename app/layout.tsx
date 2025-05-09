@@ -35,7 +35,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {children}
-          <Toaster />
+          <Toaster position="top-center" />
         </body>
       </SessionProvider>
     </html>

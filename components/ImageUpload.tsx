@@ -11,7 +11,7 @@ const ImageUpload = ({ onFileChange }: { onFileChange: (file: { filePath: string
   // Updated authenticator with better error handling
   const authenticator = async () => {
     try {
-      const response = await fetch('/api/auth/imagekit');
+      const response = await fetch('/api/imagekit');
 
       if (!response.ok) {
         const errorData = await response.json();
