@@ -69,15 +69,17 @@ export const signUp = async (params: AuthCredentials) => {
             universityCard,
         });
 
-        // await workflowClient.trigger({
-        //     url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
-        //     body: {
-        //         email,
-        //         fullName,
-        //     },
-        // });
-
         await signInWithCredentials({ email, password });
+
+        // 🚀 Dispara a workflow da Upstash para envio de e-mail
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workflows/onboarding`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, name: fullName }), // <-- aqui enviamos também o nome
+        });
+          
 
         return { success: true };
     } catch (error) {
