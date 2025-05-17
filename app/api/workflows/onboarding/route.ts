@@ -42,9 +42,9 @@ async function sendEmail(subject: string, email: string, name: string) {
             process.env.EMAILJS_SERVICE_ID!,
             process.env.EMAILJS_TEMPLATE_ID!,
             {
-                user_email: email,
-                user_name: name, // <- ESSA VARIÁVEL precisa ser enviada
-                subject: subject,
+                email: email,          // Corresponde ao {{email}} do template
+                user_name: name,       // Corresponde ao {{user_name}} do template
+                subject: subject,      // Corresponde ao {{subject}} do template
             },
             {
                 publicKey: process.env.EMAILJS_PUBLIC_KEY!,

@@ -1,3 +1,4 @@
+//lib/actions/auth.ts
 "use server";
 
 import { eq } from "drizzle-orm";
@@ -8,9 +9,6 @@ import { signIn } from "@/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import ratelimit from "@/lib/ratelimit";
-// import { redirect } from "next/navigation";
-// import { workflowClient } from "@/lib/workflow";
-// import config from "@/lib/config";
 
 export const signInWithCredentials = async (
     params: Pick<AuthCredentials, "email" | "password">,
@@ -79,7 +77,7 @@ export const signUp = async (params: AuthCredentials) => {
             },
             body: JSON.stringify({ email, name: fullName }), // <-- aqui enviamos também o nome
         });
-          
+
 
         return { success: true };
     } catch (error) {
