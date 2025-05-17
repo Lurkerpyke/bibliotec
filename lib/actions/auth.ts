@@ -70,13 +70,18 @@ export const signUp = async (params: AuthCredentials) => {
         await signInWithCredentials({ email, password });
 
         // 🚀 Dispara a workflow da Upstash para envio de e-mail
-        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workflows/onboarding`, {
+        // Inside signUp try block
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workflows/onboarding`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, name: fullName }), // <-- aqui enviamos também o nome
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, name: fullName }),
         });
+
+        if (!res.ok) {
+            const error = await res.text();
+            console.error('❌ Workflow failed:', error);
+            throw new Error('Failed to trigger welcome email');
+  }
 
 
         return { success: true };
