@@ -6,13 +6,13 @@ import emailjs from '@emailjs/nodejs';
 type InitialData = {
     email: string;
     name: string; // <-- agora aceitamos o nome também
-  };
+};
 
 export const { POST } = serve<InitialData>(async (context) => {
     const { email, name } = context.requestPayload
 
     await context.run("new-signup", async () => {
-        await sendEmail("Welcome to the platform", email, name)
+        await sendEmail("Welcome to the platform", email, name, process.env.EMAILJS_TEMPLATE_ID!)
     })
 
     await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3)
@@ -24,11 +24,7 @@ export const { POST } = serve<InitialData>(async (context) => {
 
         if (state === "non-active") {
             await context.run("send-email-non-active", async () => {
-                await sendEmail("Email to non-active users", email, name)
-            })
-        } else if (state === "active") {
-            await context.run("send-email-active", async () => {
-                await sendEmail("Send newsletter to active users", email, name)
+                await sendEmail("Email to non-active users", email, name, process.env.EMAILJS_TEMPLATE_NON_ACTIVE!)
             })
         }
 
@@ -36,11 +32,11 @@ export const { POST } = serve<InitialData>(async (context) => {
     }
 });
 
-async function sendEmail(subject: string, email: string, name: string) {
+async function sendEmail(subject: string, email: string, name: string, templateId: string) {
     try {
         const response = await emailjs.send(
             process.env.EMAILJS_SERVICE_ID!,
-            process.env.EMAILJS_TEMPLATE_ID!,
+            templateId,
             {
                 email: email,          // Corresponde ao {{email}} do template
                 user_name: name,       // Corresponde ao {{user_name}} do template
