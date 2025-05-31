@@ -1,5 +1,5 @@
 interface Book {
-    id: number;
+    id: string;
     title: string;
     author: string;
     genre: string;
@@ -7,12 +7,12 @@ interface Book {
     totalCopies: number;
     availableCopies: number;
     description: string;
-    color: string;
-    cover: string;
-    // video:  string;
+    coverColor: string;
+    coverUrl: string;
+    videoUrl: string;
     summary: string;
-    isLoanedBook?: boolean;
-}
+    createdAt: Date | null;
+  }
 
 interface AuthCredentials {
     fullName: string;

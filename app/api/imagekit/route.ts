@@ -1,23 +1,31 @@
+// app/api/imagekit/route.ts
 import { NextResponse } from 'next/server';
 import ImageKit from 'imagekit';
 
 export async function GET() {
+    // Validate environment variables
+    if (!process.env.IMAGEKIT_PRIVATE_KEY ||
+        !process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY ||
+        !process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT) {
+        return NextResponse.json(
+            { error: 'ImageKit configuration missing' },
+            { status: 500 }
+        );
+    }
+
     const imagekit = new ImageKit({
-        privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
-        publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
-        urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!
+        privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+        publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY,
+        urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT
     });
 
     try {
-        // Correct authentication parameters generation
-        const timestamp = Math.floor(Date.now() / 1000).toString();
-        const authenticationParams = imagekit.getAuthenticationParameters(timestamp);
-
-        return NextResponse.json(authenticationParams);
+        const authParams = imagekit.getAuthenticationParameters();
+        return NextResponse.json(authParams);
     } catch (error) {
         console.error('ImageKit Auth Error:', error);
         return NextResponse.json(
-            { error: 'Failed to generate authentication parameters' },
+            { error: 'Authentication failed' },
             { status: 500 }
         );
     }

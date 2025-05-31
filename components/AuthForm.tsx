@@ -44,7 +44,7 @@ const AuthForm = <T extends FieldValues>({
         defaultValues: defaultValues as DefaultValues<T>,
     })
 
-    // 2. Define a submit handler.
+    // Define a submit handler.
     const handleSubmit: SubmitHandler<T> = async (data) => {
         const result = await onSubmit(data);
 

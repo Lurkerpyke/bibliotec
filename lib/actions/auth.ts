@@ -10,6 +10,8 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import ratelimit from "@/lib/ratelimit";
 import emailjs from '@emailjs/nodejs';
+import { send } from '@emailjs/nodejs';
+
 
 export const signInWithCredentials = async (
     params: Pick<AuthCredentials, "email" | "password">,
@@ -40,6 +42,7 @@ export const signInWithCredentials = async (
 };
 
 export const signUp = async (params: AuthCredentials) => {
+    
     const { fullName, email, universityId, password, universityCard } = params;
 
     const ip = (await headers()).get("x-forwarded-for") || "127.0.0.1";
@@ -68,7 +71,6 @@ export const signUp = async (params: AuthCredentials) => {
             universityCard,
         });
 
-        
         // DEV: Direct email send (bypass workflow)
         if (process.env.NODE_ENV === "development") {
             await emailjs.send(
@@ -84,20 +86,22 @@ export const signUp = async (params: AuthCredentials) => {
                     privateKey: process.env.EMAILJS_PRIVATE_KEY!,
                 }
             );
-        } else {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workflows/onboarding`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-API-Secret": process.env.WORKFLOW_SECRET! // Add security
-                },
-                body: JSON.stringify({ email, name: fullName }),
-            });
+        }
+        
+            else {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workflows/onboarding`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-API-Secret": process.env.WORKFLOW_SECRET! // Add security
+                    },
+                    body: JSON.stringify({ email, name: fullName }),
+                });
 
-            if (!res.ok) {
-                const error = await res.text();
-                console.error('❌ Production workflow failed:', error);
-            }
+                if (!res.ok) {
+                    const error = await res.text();
+                    console.error('❌ Production workflow failed:', error);
+                }
           }
         
         await signInWithCredentials({ email, password });

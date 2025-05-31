@@ -1,9 +1,16 @@
-import React from 'react'
-import Image from 'next/image'
-import { Button } from './ui/button'
-import BookCover from './BookCover'
+import React from 'react';
+import Image from 'next/image';
+import BookCover from './BookCover';
+import BorrowBook from './BorrowBook';
+import { db } from '@/database/drizzle';
+import { users } from '@/database/schema';
+import { eq } from 'drizzle-orm';
 
-const BookOverview = ({
+interface Props extends Book {
+    userId: string;
+};
+
+const BookOverview = async ({
     title,
     author,
     genre,
@@ -11,13 +18,28 @@ const BookOverview = ({
     totalCopies,
     availableCopies,
     description,
-    color,
-    cover,
-}: Book) => {
+    coverColor,
+    coverUrl,
+    id,
+    userId,
+}: Props) => {
+
+    const [user] = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, userId))
+        .limit(1);
+
+    const borrowingEligibility = {
+        isEligible: availableCopies > 0 && user?.status === "APPROVED",
+        message:
+            availableCopies <= 0
+                ? "Book is not available"
+                : "You are not eligible to borrow this book",
+    };
+
     return (
         <section className='flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8'>
-
-
             {/* TEXTO E DETALHES */}
             <div className='flex flex-1 flex-col gap-5'>
                 <h1 className='text-5xl font-semibold text-white md:text-7xl'>{title}</h1>
@@ -44,10 +66,7 @@ const BookOverview = ({
 
                     <p className='mt-2 text-justify text-xl text-light-100'>{description}</p>
 
-                    <Button className='mt-4 min-h-10 w-fit bg-primary text-dark-100 hover:bg-primary-foreground/90 max-md:w-full'>
-                        <Image src='/icons/book.svg' alt='book' width={20} height={20} />
-                        <p className='ml-2 text-xl text-black'>Escolher</p>
-                    </Button>
+                    <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility} />
                 </div>
             </div>
 
@@ -57,22 +76,21 @@ const BookOverview = ({
                     <BookCover
                         variant='wide'
                         className='z-10'
-                        coverColor={color}
-                        coverImage={cover}
+                        coverColor={coverColor}
+                        coverImage={coverUrl}
                     />
 
                     <div className='absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
                         <BookCover
                             variant='wide'
-                            coverColor={color}
-                            coverImage={cover}
+                            coverColor={coverColor}
+                            coverImage={coverUrl}
                         />
                     </div>
                 </div>
             </div>
         </section>
-
     )
-}
+};
 
 export default BookOverview;
