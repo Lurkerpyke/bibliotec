@@ -66,7 +66,11 @@ const BookOverview = async ({
 
                     <p className='mt-2 text-justify text-xl text-light-100'>{description}</p>
 
-                    <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility} />
+                    {user && (<BorrowBook
+                        bookId={id}
+                        userId={userId}
+                        borrowingEligibility={borrowingEligibility}
+                    />)}
                 </div>
             </div>
 
