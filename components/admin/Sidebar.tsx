@@ -16,13 +16,15 @@ const Sidebar = ({ session }: { session: Session }) => {
             {/* Logo Section */}
             <div className="flex flex-col items-center md:items-start px-4 py-6">
                 <div className="flex items-center gap-3">
-                    <Image
-                        src="/icons/admin/logo.svg"
-                        alt="Bibliotec Logo"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 md:w-10 md:h-10 transition-all"
-                    />
+                    <Link href='/'>
+                        <Image
+                            src="/icons/admin/logo.svg"
+                            alt="Bibliotec Logo"
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 md:w-10 md:h-10 transition-all"
+                        />
+                    </Link>
                     <h1 className="hidden md:block text-xl font-bold text-slate-700 tracking-tight">
                         Bibliotec
                     </h1>
