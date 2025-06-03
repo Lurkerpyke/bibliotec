@@ -59,11 +59,6 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
-
-  manifest: "/site.webmanifest",
-  alternates: {
-    canonical: BASE_URL,
-  },
   category: "library management system",
   robots: {
     index: true,
@@ -87,6 +82,11 @@ export default async function RootLayout({
   
   return (
     <html lang="pt-br">
+      <head>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <SessionProvider session={session}>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
