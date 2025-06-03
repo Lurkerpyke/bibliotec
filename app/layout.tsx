@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Bibliotec",
     images: [
       {
-        url: "/bibliotec-og.png",
+        url: `${BASE_URL}/bibliotec-og.png`,
         width: 1200,
         height: 630,
         alt: "Bibliotec - Plataforma de Gestão de Bibliotecas",
