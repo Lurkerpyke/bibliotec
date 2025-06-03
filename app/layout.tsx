@@ -35,7 +35,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Leandro Soares & JS Mastery", url: BASE_URL }],
   creator: "Leandro Soares",
   publisher: "Bibliotec Inc.",
-
+  twitter: {
+    card: "summary_large_image",
+    title: "Bibliotec - Gestão Inteligente para Bibliotecas",
+    description: "Solução completa para administração de bibliotecas com tecnologia de ponta",
+    images: [`${BASE_URL}/bibliotec-og.png`],
+  },
   openGraph: {
     title: "Bibliotec - Gestão Inteligente para Bibliotecas",
     description: "Solução completa para administração de bibliotecas com tecnologia de ponta",
