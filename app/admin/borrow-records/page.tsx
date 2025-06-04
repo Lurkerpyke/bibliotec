@@ -56,12 +56,6 @@ const Page = async ({
                         Manage and track all book borrowing activities
                     </p>
                 </div>
-                <Button asChild variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
-                    <Link href="/admin/borrow-records/new" className="flex items-center gap-2">
-                        <Plus className="w-4 h-4" />
-                        Create New Record
-                    </Link>
-                </Button>
             </div>
 
             {/* Stats Overview */}
