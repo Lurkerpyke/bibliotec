@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/database/drizzle";
-import { books, borrowRecords } from "@/database/schema";
+import { books, borrowRecords, users } from "@/database/schema";
 import { eq } from "drizzle-orm";
 import dayjs from "dayjs";
 
@@ -9,6 +9,19 @@ export const borrowBook = async (params: BorrowBookParams) => {
     const { userId, bookId } = params;
 
     try {
+        const user = await db
+            .select({ status: users.status })
+            .from(users)
+            .where(eq(users.id, userId))
+            .limit(1);
+
+        if (!user.length || user[0].status !== "APPROVED") {
+            return {
+                success: false,
+                error: "Seu cadastro ainda está em processo de aprovação.",
+            };
+        }
+
         const book = await db
             .select({ availableCopies: books.availableCopies })
             .from(books)

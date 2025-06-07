@@ -13,6 +13,7 @@ export type BorrowRecordDetail = {
     userEmail: string;
     userUniversityId: number;
     userStatus: "PENDING" | "APPROVED" | "REJECTED" | null;
+    bookId: string;
     bookTitle: string;
     bookAuthor: string;
     bookGenre: string;
@@ -33,6 +34,7 @@ export const getBorrowRecord = async (id: string): Promise<BorrowRecordDetail | 
             userEmail: users.email,
             userUniversityId: users.universityId,
             userStatus: users.status,
+            bookId: books.id,
             bookTitle: books.title,
             bookAuthor: books.author,
             bookGenre: books.genre,
@@ -55,6 +57,7 @@ export const getBorrowRecord = async (id: string): Promise<BorrowRecordDetail | 
     return {
         ...data,
         borrowDate: new Date(data.borrowDate),
+        bookId: data.bookId,
         dueDate,
         returnDate: data.returnDate ? parseISO(data.returnDate) : null,
         isOverdue: data.status === "BORROWED" && dueDate < today

@@ -277,7 +277,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 )}
 
                 <Button asChild variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
-                    <Link href={`/admin/books`}>View Book Details</Link>
+                    <Link href={`/books/${record.bookId}`}>View Book Details</Link>
                 </Button>
                 <Button asChild variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
                     <Link href={`/admin/users?search=${record.userEmail}`}>

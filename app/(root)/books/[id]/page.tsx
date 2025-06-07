@@ -27,7 +27,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <div className="book-details">
                 <div className="flex-[1.5]">
                     <section className="flex flex-col gap-7">
-                        <h3>Video</h3>
+                        <h3 className="text-4xl mt-6 text-amber-500">Video Trailer</h3>
 
                         <BookVideo videoUrl={bookDetails.videoUrl} />
                     </section>

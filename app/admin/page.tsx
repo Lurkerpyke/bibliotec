@@ -174,7 +174,7 @@ const Page = async () => {
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 <Button size="sm" variant="outline" asChild>
-                                                    <Link href={`/admin/users/${user.id}`}>Review</Link>
+                                                    <Link href={`/admin/users?search=${user.email}`}>Review</Link>
                                                 </Button>
                                             </TableCell>
                                         </TableRow>

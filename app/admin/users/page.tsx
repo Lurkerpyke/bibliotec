@@ -61,9 +61,9 @@ const Page = async ({
         <section className="w-full rounded-2xl bg-white p-6 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 className="text-2xl font-bold text-blue-500">Manage Users</h1>
+                    <h1 className="text-2xl font-bold text-blue-500">Gerenciamento de Usuários</h1>
                     <p className="text-sm text-gray-600 mt-1">
-                        Approve, reject, or manage user permissions
+                        Aprove, rejeite e gerencie as permisões
                     </p>
                 </div>
             </div>
@@ -76,13 +76,13 @@ const Page = async ({
                 <Table>
                     <TableHeader className="bg-gray-100">
                         <TableRow>
-                            <TableHead className="text-black">User</TableHead>
+                            <TableHead className="text-black">Usuário</TableHead>
                             <TableHead className="text-black">Email</TableHead>
-                            <TableHead className="text-black">University ID</TableHead>
+                            <TableHead className="text-black">ID</TableHead>
                             <TableHead className="text-black">Status</TableHead>
-                            <TableHead className="text-black">Role</TableHead>
-                            <TableHead className="text-black">Joined</TableHead>
-                            <TableHead className="text-right text-black">Actions</TableHead>
+                            <TableHead className="text-black">Cargo</TableHead>
+                            <TableHead className="text-black">Data de entrada</TableHead>
+                            <TableHead className="text-right text-black">Acões</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

@@ -30,7 +30,7 @@ export default function SearchUsers() {
             <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
                 type="search"
-                placeholder="Search users by name, email, ID, status or role..."
+                placeholder="Pesquise usuários por nome, email, ID, status ou cargo..."
                 className="pl-10 pr-24 text-black"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -42,7 +42,7 @@ export default function SearchUsers() {
                 onClick={() => setSearchTerm("")}
                 disabled={!searchTerm}
             >
-                Clear
+                Limpar
             </Button>
         </div>
     );
