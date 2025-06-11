@@ -5,6 +5,8 @@ import { books, users } from "@/database/schema";
 import { auth } from "@/auth";
 import { desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import MobileNoticeWrapper from "@/components/MobileNoticeWrapper";
+
 
 
 const Home = async () => {
@@ -17,12 +19,13 @@ const Home = async () => {
   return (
     <>
       <BookOverview {...latestBooks[0]} userId={session?.user?.id as string} />
-
       <BookList
         title="Latest Books"
         books={latestBooks.slice(1)}
         containerClassName="mt-28"
       />
+
+      <MobileNoticeWrapper />
     </>
   );
 };

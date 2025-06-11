@@ -1,0 +1,148 @@
+.container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 300px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform-origin: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.content {
+    padding: 20px;
+    color: white;
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.3rem;
+    flex-grow: 1;
+}
+
+.closeButton {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.message p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.progressBar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress {
+    height: 100%;
+    width: 65%;
+    background: white;
+    border-radius: 3px;
+    animation: progressAnimation 2s infinite;
+}
+
+.footerNote {
+    opacity: 0.8;
+    font-size: 0.8rem;
+}
+
+/* Animações */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px rgba(106, 17, 203, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(106, 17, 203, 0);
+    }
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 65%;
+    }
+
+    50% {
+        width: 75%;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite; }
