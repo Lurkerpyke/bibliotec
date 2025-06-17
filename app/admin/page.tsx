@@ -8,6 +8,7 @@ import { Activity, Book, User, BarChart3, Clock, CheckCircle, AlertCircle } from
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { getDashboardData } from "@/lib/admin/actions/admin-dashboard";
+import { SendNoticesButton } from "@/components/SendNoticesButton";
 
 const Page = async () => {
     const {
@@ -244,7 +245,7 @@ const Page = async () => {
                                                 </TableCell>
                                                 <TableCell className="text-right">
                                                     <Button size="sm" variant="outline" asChild>
-                                                        <Link href={`/admin/borrows/${record.id}`}>Manage</Link>
+                                                        <Link href={`/admin/borrow-records/${record.id}`}>Manage</Link>
                                                     </Button>
                                                 </TableCell>
                                             </TableRow>
@@ -331,9 +332,7 @@ const Page = async () => {
                                 <p className="text-sm text-gray-500 mt-1">Send reminders for overdue books</p>
                             </div>
                         </div>
-                        <Button className="mt-4 w-full" variant="destructive" asChild>
-                            <Link href="/admin/borrows?status=OVERDUE">Send Notices</Link>
-                        </Button>
+                        <SendNoticesButton />
                     </CardContent>
                 </Card>
             </div>

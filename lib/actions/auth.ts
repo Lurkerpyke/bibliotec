@@ -10,8 +10,6 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import ratelimit from "@/lib/ratelimit";
 import emailjs from '@emailjs/nodejs';
-import { send } from '@emailjs/nodejs';
-
 
 export const signInWithCredentials = async (
     params: Pick<AuthCredentials, "email" | "password">,
