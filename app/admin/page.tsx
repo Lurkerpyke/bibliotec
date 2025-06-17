@@ -139,7 +139,7 @@ const Page = async () => {
                             </CardDescription>
                         </div>
                         <Button variant="link" className="text-blue-600" asChild>
-                            <Link href="/admin/users?status=PENDING">View All</Link>
+                            <Link href="/admin/users?search=PENDING">View All</Link>
                         </Button>
                     </CardHeader>
                     <CardContent>
