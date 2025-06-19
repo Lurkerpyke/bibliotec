@@ -46,14 +46,7 @@ export const metadata: Metadata = {
     description: "Solução completa para administração de bibliotecas com tecnologia de ponta",
     url: BASE_URL,
     siteName: "Bibliotec",
-    images: [
-      {
-        url: `${BASE_URL}/bibliotec-og.png`,
-        width: 1200,
-        height: 630,
-        alt: "Bibliotec - Plataforma de Gestão de Bibliotecas",
-      }
-    ],
+    images: ["https://bibliotec-ten.vercel.app//bibliotec-og"],
     locale: "pt_BR",
     type: "website",
   },
@@ -88,8 +81,7 @@ export default async function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image" content="/bibliotec-og" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <SessionProvider session={session}>
