@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description: "Solução completa para administração de bibliotecas com tecnologia de ponta",
     url: BASE_URL,
     siteName: "Bibliotec",
-    images: ["https://bibliotec-ten.vercel.app//bibliotec-og"],
+    images: ["https://bibliotec-ten.vercel.app//bibliotec-og.png"],
     locale: "pt_BR",
     type: "website",
   },
