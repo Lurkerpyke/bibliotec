@@ -98,7 +98,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                         required
                                         placeholder="Jane Austen"
                                         {...field}
-                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
                                 </FormControl>
                                 <FormMessage className="text-rose-500 font-medium" />
@@ -118,7 +118,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                         required
                                         placeholder="Science Fiction"
                                         {...field}
-                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
                                 </FormControl>
                                 <FormMessage className="text-rose-500 font-medium" />
@@ -141,7 +141,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                         max={5}
                                         placeholder="4.5"
                                         {...field}
-                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
                                 </FormControl>
                                 <FormMessage className="text-rose-500 font-medium" />
@@ -164,7 +164,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                         max={10000}
                                         placeholder="50"
                                         {...field}
-                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                        className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
                                 </FormControl>
                                 <FormMessage className="text-rose-500 font-medium" />
@@ -226,7 +226,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                     placeholder="A captivating story about..."
                                     {...field}
                                     rows={5}
-                                    className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                    className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                 />
                             </FormControl>
                             <FormMessage className="text-rose-500 font-medium" />
@@ -272,7 +272,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                         placeholder="Key highlights and takeaways..."
                                         {...field}
                                         rows={5}
-                                        className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                        className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
                                 </FormControl>
                                 <FormMessage className="text-rose-500 font-medium" />

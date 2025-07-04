@@ -113,8 +113,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                                 <h2 className="font-bold text-lg">{record.bookTitle}</h2>
                                 <p className="text-gray-600">{record.bookAuthor}</p>
                                 <div className="mt-2 flex flex-wrap gap-2">
-                                    <Badge variant="outline">{record.bookGenre}</Badge>
-                                    <Badge variant="outline">
+                                    <Badge variant="outline" className="text-blue-800">{record.bookGenre}</Badge>
+                                    <Badge variant="outline" className="text-blue-800">
                                         {record.bookTotalCopies} copies
                                     </Badge>
                                 </div>

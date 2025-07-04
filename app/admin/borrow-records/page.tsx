@@ -24,7 +24,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Download, Plus, Search } from "lucide-react";
+import { Download, Search } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { getBorrowRecords } from "@/lib/admin/actions/admin-borrow-records";

@@ -55,7 +55,7 @@ export const signUp = async (params: AuthCredentials) => {
         .limit(1);
 
     if (existingUser.length > 0) {
-        return { success: false, error: "User already exists" };
+        return { success: false, error: "Email já cadastrado" };
     }
 
     const hashedPassword = await hash(password, 10);
