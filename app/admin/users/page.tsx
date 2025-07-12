@@ -58,17 +58,17 @@ const Page = async ({
     const baseQuery = search ? { search } : {};
 
     return (
-        <section className="w-full rounded-2xl bg-white p-6 shadow-lg">
+        <section className="w-full rounded-2xl bg-white p-2 md:p-6 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-2xl font-bold text-blue-500">Gerenciamento de Usuários</h1>
-                    <p className="text-sm text-gray-600 mt-1">
-                        Aprove, rejeite e gerencie as permisões
+                    <p className="text-xs md:text-sm text-gray-600 mt-1">
+                        Aprove, rejeite e gerencie as permissões
                     </p>
                 </div>
             </div>
 
-            <div className="bg-gray-50 rounded-lg border p-4 mb-6">
+            <div className="bg-gray-50 rounded-lg border p-0 md:p-4 mb-6">
                 <SearchUsers />
             </div>
 
@@ -82,7 +82,7 @@ const Page = async ({
                             <TableHead className="text-black">Status</TableHead>
                             <TableHead className="text-black">Cargo</TableHead>
                             <TableHead className="text-black">Data de entrada</TableHead>
-                            <TableHead className="text-right text-black">Acões</TableHead>
+                            <TableHead className="text-right text-black">Ações</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -91,9 +91,9 @@ const Page = async ({
                                 <TableCell colSpan={7} className="text-center py-12">
                                     <div className="flex flex-col items-center justify-center">
                                         <Icons.user className="h-12 w-12 text-gray-400 mb-3" />
-                                        <h3 className="font-medium text-gray-900">No users found</h3>
-                                        <p className="text-sm text-gray-500 mt-1">
-                                            Try adjusting your search or add a new user
+                                        <h3 className="font-medium text-gray-900 text-xs md:text-sm">Nenhum usuário encontrado</h3>
+                                        <p className="text-xs md:text-sm text-gray-500 mt-1">
+                                            Tente ajustar sua busca ou adicione um novo usuário
                                         </p>
                                     </div>
                                 </TableCell>
@@ -111,24 +111,26 @@ const Page = async ({
                                                     </span>
                                                 </div>
                                                 <div className="ml-4">
-                                                    <div className="text-sm font-medium text-gray-900">
+                                                    <div className="text-xs md:text-sm font-medium text-gray-900">
                                                         {user.fullName}
                                                     </div>
-                                                    <div className="text-sm text-gray-500">
+                                                    <div className="text-xs md:text-sm text-gray-500">
                                                         {user.email}
                                                     </div>
                                                 </div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="text-black">{user.email}</TableCell>
-                                        <TableCell className="text-black">{user.universityId}</TableCell>
+                                        <TableCell className="text-black text-xs md:text-sm">{user.email}</TableCell>
+                                        <TableCell className="text-black text-xs md:text-sm">{user.universityId}</TableCell>
                                         <TableCell>
                                             <Badge
-                                                className={transformedUser.status === 'APPROVED'
-                                                    ? "bg-green-100 text-green-800"
-                                                    : transformedUser.status === 'PENDING'
-                                                        ? "bg-yellow-100 text-yellow-800"
-                                                        : "bg-red-100 text-red-800"
+                                                className={
+                                                    (transformedUser.status === 'APPROVED'
+                                                        ? "bg-green-100 text-green-800"
+                                                        : transformedUser.status === 'PENDING'
+                                                            ? "bg-yellow-100 text-yellow-800"
+                                                            : "bg-red-100 text-red-800"
+                                                    ) + " text-xs md:text-sm"
                                                 }
                                             >
                                                 {transformedUser.status}
@@ -136,16 +138,18 @@ const Page = async ({
                                         </TableCell>
                                         <TableCell>
                                             <Badge
-                                                className={transformedUser.role === 'ADMIN'
-                                                    ? "bg-purple-100 text-purple-800"
-                                                    : "bg-blue-100 text-blue-800"
+                                                className={
+                                                    (transformedUser.role === 'ADMIN'
+                                                        ? "bg-purple-100 text-purple-800"
+                                                        : "bg-blue-100 text-blue-800"
+                                                    ) + " text-xs md:text-sm"
                                                 }
                                             >
                                                 {transformedUser.role}
                                             </Badge>
                                         </TableCell>
-                                        <TableCell className="text-black">{user.createdAt ? user.createdAt.toLocaleDateString() : "N/A"}</TableCell>
-                                        <TableCell className="text-right text-black">
+                                        <TableCell className="text-black text-xs md:text-sm">{user.createdAt ? user.createdAt.toLocaleDateString() : "N/A"}</TableCell>
+                                        <TableCell className="text-right text-black text-xs md:text-sm">
                                             <div className="flex justify-end space-x-2">
                                                 {transformedUser.status === 'PENDING' && (
                                                     <>
@@ -159,7 +163,7 @@ const Page = async ({
                                                                 className="text-green-600 hover:text-green-900"
                                                                 type="submit"
                                                             >
-                                                                Approve
+                                                                Aprovar
                                                             </Button>
                                                         </form>
                                                         <form action={async () => {
@@ -172,10 +176,10 @@ const Page = async ({
                                                                 className="text-red-600 hover:text-red-900"
                                                                 type="submit"
                                                             >
-                                                                Reject
+                                                                Rejeitar
                                                             </Button>
                                                         </form>
-                                                        
+
                                                     </>
                                                 )}
 
@@ -191,11 +195,11 @@ const Page = async ({
                                                                 className="text-purple-600 hover:text-purple-900"
                                                                 type="submit"
                                                             >
-                                                                Make Admin
+                                                                Mudar para Admin
                                                             </Button>
                                                         </form>
                                                     </>
-                                                    
+
                                                 )}
 
                                                 {transformedUser.role === 'ADMIN' && (
@@ -210,7 +214,7 @@ const Page = async ({
                                                                 className="text-blue-600 hover:text-blue-900 disabled:opacity-50"
                                                                 type="submit"
                                                             >
-                                                                Remove Admin
+                                                                Remover Admin
                                                             </Button>
                                                         </form>
                                                     </>
@@ -226,7 +230,7 @@ const Page = async ({
                                                         className="text-gray-600 hover:text-gray-900"
                                                         type="submit"
                                                     >
-                                                        Delete
+                                                        Deletar
                                                     </Button>
                                                 </form>
                                             </div>
@@ -240,19 +244,19 @@ const Page = async ({
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between mt-6">
-                <p className="text-sm text-gray-700">
-                    Showing <span className="font-medium">{(page - 1) * perPage + 1}</span>{" "}
-                    to{" "}
+            <div className="flex flex-col md:flex-row gap-2 items-center justify-between mt-6">
+                <p className="text-xs md:text-sm text-gray-700">
+                    Exibindo <span className="font-medium">{(page - 1) * perPage + 1}</span>{" "}
+                    até{" "}
                     <span className="font-medium">
                         {Math.min(page * perPage, totalUsers)}
                     </span>{" "}
-                    of <span className="font-medium">{totalUsers}</span> users
+                    de <span className="font-medium">{totalUsers}</span> usuários
                 </p>
                 <div className="flex space-x-2">
                     <Button
                         variant="outline"
-                        className="bg-blue-100 text-blue-500 hover:bg-blue-200"
+                        className="bg-blue-100 text-blue-500 hover:bg-blue-200 text-xs md:text-sm h-8 w-16 md:h-10 md:w-24"
                         disabled={page <= 1}
                         asChild={page > 1}
                     >
@@ -263,15 +267,15 @@ const Page = async ({
                                     query: { ...baseQuery, page: page - 1 },
                                 }}
                             >
-                                Previous
+                                Anterior
                             </Link>
                         ) : (
-                            <span>Previous</span>
+                            <span>Anterior</span>
                         )}
                     </Button>
                     <Button
                         variant="outline"
-                        className="bg-blue-100 text-blue-500 hover:bg-blue-200"
+                        className="bg-blue-100 text-blue-500 hover:bg-blue-200 text-xs md:text-sm h-8 w-16 md:h-10 md:w-24"
                         disabled={page * perPage >= totalUsers}
                         asChild={page * perPage < totalUsers}
                     >
@@ -282,10 +286,10 @@ const Page = async ({
                                     query: { ...baseQuery, page: page + 1 },
                                 }}
                             >
-                                Next
+                                Próximo
                             </Link>
                         ) : (
-                            <span>Next</span>
+                            <span>Próximo</span>
                         )}
                     </Button>
                 </div>

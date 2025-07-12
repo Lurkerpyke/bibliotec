@@ -51,9 +51,9 @@ const Page = async ({
         <div className="p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">Borrow Records</h1>
+                    <h1 className="text-3xl font-bold text-gray-900">Registros de Empréstimo</h1>
                     <p className="text-gray-600 mt-2">
-                        Manage and track all book borrowing activities
+                        Gerencie e acompanhe todas as atividades de empréstimo de livros
                     </p>
                 </div>
             </div>
@@ -62,7 +62,7 @@ const Page = async ({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-blue-500 bg-gray-100">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Total Records</CardTitle>
+                        <CardTitle className="text-sm font-medium">Registros Totais</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{totalRecords}</div>
@@ -71,7 +71,7 @@ const Page = async ({
 
                 <Card className="border-l-4 border-amber-500 bg-gray-100">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Active Borrows</CardTitle>
+                        <CardTitle className="text-sm font-medium">Empréstimos Ativos</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{activeRecords}</div>
@@ -80,7 +80,7 @@ const Page = async ({
 
                 <Card className="border-l-4 border-rose-500 bg-gray-100">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Overdue</CardTitle>
+                        <CardTitle className="text-sm font-medium">Atrasados</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{overdueRecords}</div>
@@ -89,7 +89,7 @@ const Page = async ({
 
                 <Card className="border-l-4 border-emerald-500 bg-gray-100">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Returned</CardTitle>
+                        <CardTitle className="text-sm font-medium">Devolvidos</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{returnedRecords}</div>
@@ -105,7 +105,7 @@ const Page = async ({
                             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
                             <Input
                                 name="search"
-                                placeholder="Search by book, user, or email..."
+                                placeholder="Buscar por livro, usuário ou email..."
                                 className="pl-10"
                                 defaultValue={search}
                             />
@@ -114,21 +114,21 @@ const Page = async ({
                         <div className="flex gap-4">
                             <Select name="status" defaultValue={status}>
                                 <SelectTrigger className="w-[180px]">
-                                    <SelectValue placeholder="Filter by status" />
+                                    <SelectValue placeholder="Filtrar por status" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="all">All Records</SelectItem>
-                                    <SelectItem value="BORROWED">Active</SelectItem>
-                                    <SelectItem value="RETURNED">Returned</SelectItem>
-                                    <SelectItem value="OVERDUE">Overdue</SelectItem>
+                                    <SelectItem value="all">Todos os Registros</SelectItem>
+                                    <SelectItem value="BORROWED">Ativos</SelectItem>
+                                    <SelectItem value="RETURNED">Devolvidos</SelectItem>
+                                    <SelectItem value="OVERDUE">Atrasados</SelectItem>
                                 </SelectContent>
                             </Select>
 
-                            <Button type="submit" variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">Apply Filters</Button>
+                            <Button type="submit" variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">Aplicar Filtros</Button>
 
                             <Button variant="outline" className="flex items-center gap-2">
                                 <Download className="h-4 w-4" />
-                                Export
+                                Exportar
                             </Button>
                         </div>
                     </form>
@@ -138,22 +138,22 @@ const Page = async ({
             {/* Records Table */}
             <Card className="bg-gray-100">
                 <CardHeader>
-                    <CardTitle>Borrowing History</CardTitle>
+                    <CardTitle>Histórico de Empréstimos</CardTitle>
                     <CardDescription>
-                        {records.length} records found
+                        {records.length} registros encontrados
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="text-black">Book</TableHead>
-                                <TableHead className="text-black">Borrower</TableHead>
-                                <TableHead className="text-black">Borrow Date</TableHead>
-                                <TableHead className="text-black">Due Date</TableHead>
-                                <TableHead className="text-black">Return Date</TableHead>
+                                <TableHead className="text-black">Livro</TableHead>
+                                <TableHead className="text-black">Usuário</TableHead>
+                                <TableHead className="text-black">Data do Empréstimo</TableHead>
+                                <TableHead className="text-black">Data de Vencimento</TableHead>
+                                <TableHead className="text-black">Data de Devolução</TableHead>
                                 <TableHead className="text-black">Status</TableHead>
-                                <TableHead className="text-right text-black">Actions</TableHead>
+                                <TableHead className="text-right text-black">Ações</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -185,17 +185,17 @@ const Page = async ({
                                             </TableCell>
                                             <TableCell>
                                                 {isReturned ? (
-                                                    <Badge variant="default">Returned</Badge>
+                                                    <Badge variant="default">Devolvido</Badge>
                                                 ) : record.isOverdue ? (
-                                                    <Badge variant="destructive">Overdue</Badge>
+                                                    <Badge variant="destructive">Atrasado</Badge>
                                                 ) : (
-                                                    <Badge variant="secondary">Active</Badge>
+                                                    <Badge variant="secondary">Ativo</Badge>
                                                 )}
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 <Button size="sm" variant="outline" asChild>
                                                     <Link href={`/admin/borrow-records/${record.id}`}>
-                                                        View Details
+                                                        Ver Detalhes
                                                     </Link>
                                                 </Button>
                                             </TableCell>
@@ -208,10 +208,10 @@ const Page = async ({
                                         <div className="flex flex-col items-center justify-center gap-2">
                                             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
                                             <p className="text-gray-500 font-medium">
-                                                No borrow records found
+                                                Nenhum registro de empréstimo encontrado
                                             </p>
                                             <p className="text-sm text-gray-400">
-                                                Try adjusting your search or filter criteria
+                                                Tente ajustar sua busca ou os filtros
                                             </p>
                                         </div>
                                     </TableCell>

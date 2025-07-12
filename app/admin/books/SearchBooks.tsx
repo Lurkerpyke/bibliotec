@@ -31,11 +31,11 @@ export default function SearchBooks() {
 
     return (
         <div className="relative">
-            <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Icons.search className="absolute left-1 md:left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
                 type="search"
-                placeholder="Search books by title, author or genre..."
-                className="pl-10 pr-24 text-black"
+                placeholder="Buscar livros por título, autor ou gênero..."
+                className="pl-5 md:pl-10 pr-16 text-black text-xs md:text-sm h-8 md:h-10 w-full"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -46,7 +46,7 @@ export default function SearchBooks() {
                 onClick={() => setSearchTerm("")}
                 disabled={!searchTerm}
             >
-                Clear
+                Limpar
             </Button>
         </div>
     );

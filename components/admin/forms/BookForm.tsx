@@ -71,12 +71,12 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Book Title
+                                    Título do Livro
                                 </FormLabel>
                                 <FormControl>
                                     <Input
                                         required
-                                        placeholder="The Great Novel"
+                                        placeholder="O Grande Romance"
                                         {...field}
                                         className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
@@ -91,7 +91,7 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Author
+                                    Autor
                                 </FormLabel>
                                 <FormControl>
                                     <Input
@@ -111,12 +111,12 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Genre
+                                    Gênero
                                 </FormLabel>
                                 <FormControl>
                                     <Input
                                         required
-                                        placeholder="Science Fiction"
+                                        placeholder="Ficção Científica"
                                         {...field}
                                         className="min-h-14 border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
                                     />
@@ -132,7 +132,8 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Rating <span className="text-slate-400 text-sm">(1-5)</span>
+                                    Avaliação{" "}
+                                    <span className="text-slate-400 text-sm">(1-5)</span>
                                 </FormLabel>
                                 <FormControl>
                                     <Input
@@ -155,7 +156,7 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Total Copies
+                                    Total de Cópias
                                 </FormLabel>
                                 <FormControl>
                                     <Input
@@ -178,13 +179,13 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2 md:col-span-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Book Cover Image
+                                    Imagem da Capa do Livro
                                 </FormLabel>
                                 <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm">
                                     <FileUpload
                                         type="image"
                                         accept="image/*"
-                                        placeholder="Upload a book cover"
+                                        placeholder="Enviar capa do livro"
                                         folder="books/covers"
                                         variant="light"
                                         onFileChange={field.onChange}
@@ -203,7 +204,7 @@ const BookForm = ({ type, ...book }: Props) => {
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-black">
-                                Primary Color
+                                Cor Primária
                             </FormLabel>
                             <FormControl>
                                 <ColorPicker onPickerChange={field.onChange} value={field.value} />
@@ -219,11 +220,11 @@ const BookForm = ({ type, ...book }: Props) => {
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-2">
                             <FormLabel className="text-base font-medium text-slate-700">
-                                Book Description
+                                Descrição do Livro
                             </FormLabel>
                             <FormControl>
                                 <Textarea
-                                    placeholder="A captivating story about..."
+                                    placeholder="Uma história envolvente sobre..."
                                     {...field}
                                     rows={5}
                                     className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
@@ -241,13 +242,13 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Book Trailer
+                                    Trailer do Livro
                                 </FormLabel>
                                 <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm">
                                     <FileUpload
                                         type="video"
                                         accept="video/*"
-                                        placeholder="Upload a book trailer"
+                                        placeholder="Enviar trailer do livro"
                                         folder="books/videos"
                                         variant="light"
                                         onFileChange={field.onChange}
@@ -265,11 +266,11 @@ const BookForm = ({ type, ...book }: Props) => {
                         render={({ field }) => (
                             <FormItem className="flex flex-col gap-2">
                                 <FormLabel className="text-base font-medium text-slate-700">
-                                    Short Summary
+                                    Resumo Curto
                                 </FormLabel>
                                 <FormControl>
                                     <Textarea
-                                        placeholder="Key highlights and takeaways..."
+                                        placeholder="Principais destaques e aprendizados..."
                                         {...field}
                                         rows={5}
                                         className="min-h-[150px] border border-slate-200 bg-white p-4 text-base font-medium rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-blue-700"
@@ -285,7 +286,7 @@ const BookForm = ({ type, ...book }: Props) => {
                     type="submit"
                     className="min-h-14 w-full bg-indigo-950 text-white font-bold text-lg cursor-pointer rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
                 >
-                    {type === "update" ? "Update Book" : "Add Book to Library"}
+                    {type === "update" ? "Atualizar Livro" : "Adicionar Livro à Biblioteca"}
                 </Button>
             </form>
         </Form>

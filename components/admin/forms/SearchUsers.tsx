@@ -29,16 +29,16 @@ export default function SearchUsers() {
         <div className="relative">
             <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
-                type="search"
-                placeholder="Pesquise usuários por nome, email, ID, status ou cargo..."
-                className="pl-10 pr-24 text-black"
+                type="text"
+                placeholder="Pesquise usuários..."
+                className="pl-5 md:pl-10 pr-16   md:pr-24 text-black text-xs md:text-sm h-8 md:h-10 w-full"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Button
-                variant="secondary"
+                variant="ghost"
                 size="sm"
-                className="absolute right-0 top-1/2 -translate-y-1/2 h-8 bg-blue-100 text-blue-500 hover:bg-blue-200"
+                className="absolute right-0 top-1/2 -translate-y-1/2 h-7 md:h-9 bg-blue-100 text-blue-500 hover:bg-blue-200 text-xs md:text-sm"
                 onClick={() => setSearchTerm("")}
                 disabled={!searchTerm}
             >

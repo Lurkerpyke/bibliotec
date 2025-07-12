@@ -62,21 +62,21 @@ const Page = async ({
         <section className="w-full rounded-2xl bg-white p-6 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900">Book Management</h1>
-                    <p className="text-sm text-gray-600 mt-1">
-                        Manage all books in the library
+                    <h1 className="text-2xl font-bold text-gray-900">Gerenciamento de Livros</h1>
+                    <p className="text-xs md:text-sm text-gray-600 mt-1">
+                        Gerencie todos os livros da biblioteca
                     </p>
                 </div>
 
-                <Button asChild className="bg-blue-100 text-blue-500 hover:bg-blue-200">
+                <Button asChild className="bg-blue-100 text-blue-500 hover:bg-blue-200 text-xs md:text-sm h-8 md:h-10" size="sm">
                     <Link href="/admin/books/new">
-                        <Icons.plus className="h-4 w-4 mr-2" />
-                        Add New Book
+                        <Icons.plus className="h-4 w-4" />
+                        Adicionar Novo Livro
                     </Link>
                 </Button>
             </div>
 
-            <div className="bg-gray-50 rounded-lg border p-4 mb-6">
+            <div className="bg-gray-50 rounded-lg border p-0 md:p-4 mb-6">
                 <SearchBooks />
             </div>
 
@@ -84,12 +84,12 @@ const Page = async ({
                 <Table>
                     <TableHeader className="bg-gray-100">
                         <TableRow>
-                            <TableHead className="w-[200px] text-black">Book</TableHead>
-                            <TableHead className="text-black">Author</TableHead>
-                            <TableHead className="hidden md:table-cell text-black">Genre</TableHead>
-                            <TableHead className="text-center text-black">Copies</TableHead>
-                            <TableHead className="text-center text-black">Status</TableHead>
-                            <TableHead className="text-right text-black">Actions</TableHead>
+                            <TableHead className="w-[200px] text-black text-xs md:text-sm">Livro</TableHead>
+                            <TableHead className="text-black text-xs md:text-sm">Autor</TableHead>
+                            <TableHead className="hidden md:table-cell text-black text-xs md:text-sm">Gênero</TableHead>
+                            <TableHead className="text-center text-black text-xs md:text-sm">Cópias</TableHead>
+                            <TableHead className="text-center text-black text-xs md:text-sm">Status</TableHead>
+                            <TableHead className="text-right text-black text-xs md:text-sm">Ações</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -98,9 +98,9 @@ const Page = async ({
                                 <TableCell colSpan={6} className="text-center py-12">
                                     <div className="flex flex-col items-center justify-center">
                                         <Icons.book className="h-12 w-12 text-gray-400 mb-3" />
-                                        <h3 className="font-medium text-gray-900">No books found</h3>
-                                        <p className="text-sm text-gray-500 mt-1">
-                                            Try adjusting your search or add a new book
+                                        <h3 className="font-medium text-gray-900 text-xs md:text-sm">Nenhum livro encontrado</h3>
+                                        <p className="text-xs md:text-sm text-gray-500 mt-1">
+                                            Tente ajustar sua busca ou adicione um novo livro
                                         </p>
                                     </div>
                                 </TableCell>
@@ -121,33 +121,33 @@ const Page = async ({
                                                 >
                                                     {book.title}
                                                 </Link>
-                                                <p className="text-xs text-gray-500 mt-1 truncate">
+                                                <p className="text-xs md:text-sm text-gray-500 mt-1 truncate">
                                                     {book.summary.length > 100 ? `${book.summary.slice(0, 100)}...` : book.summary}
                                                 </p>
                                             </div>
                                         </div>
                                     </TableCell>
-                                    <TableCell className="font-medium text-black">{book.author}</TableCell>
+                                    <TableCell className="font-medium text-black text-xs md:text-sm">{book.author}</TableCell>
                                     <TableCell className="hidden md:table-cell">
-                                        <Badge variant="outline" className="text-black">{book.genre}</Badge>
+                                        <Badge variant="outline" className="text-black text-xs md:text-sm">{book.genre}</Badge>
                                     </TableCell>
-                                    <TableCell className="text-center">
+                                    <TableCell className="text-center text-xs md:text-sm">
                                         <div className="flex justify-center items-center">
-                                            <span className="font-medium text-black">
+                                            <span className="font-medium text-black text-xs md:text-sm">
                                                 {book.availableCopies}
                                             </span>
-                                            <span className="mx-1 text-gray-400">/</span>
-                                            <span className="text-gray-600">{book.totalCopies}</span>
+                                            <span className="mx-1 text-gray-400 text-xs md:text-sm">/</span>
+                                            <span className="text-gray-600 text-xs md:text-sm">{book.totalCopies}</span>
                                         </div>
                                     </TableCell>
-                                    <TableCell className="text-center">
+                                    <TableCell className="text-center text-xs md:text-sm">
                                         <BookStatusBadge
                                             available={book.availableCopies}
                                             total={book.totalCopies}
                                         />
                                     </TableCell>
-                                    <TableCell className="text-right text-black">
-                                        <BookActions bookId={book.id}/>
+                                    <TableCell className="text-right text-black text-xs md:text-sm">
+                                        <BookActions bookId={book.id} />
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -157,14 +157,14 @@ const Page = async ({
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between mt-6">
-                <p className="text-sm text-gray-700">
-                    Showing <span className="font-medium">{(page - 1) * perPage + 1}</span>{" "}
-                    to{" "}
+            <div className="flex flex-col md:flex-row gap-2 items-center justify-between mt-6">
+                <p className="text-xs md:text-sm text-gray-700">
+                    Exibindo <span className="font-medium">{(page - 1) * perPage + 1}</span>{" "}
+                    até{" "}
                     <span className="font-medium">
                         {Math.min(page * perPage, totalBooks)}
                     </span>{" "}
-                    of <span className="font-medium">{totalBooks}</span> books
+                    de <span className="font-medium">{totalBooks}</span> livros
                 </p>
                 <div className="flex space-x-2">
                     <Button
@@ -180,10 +180,10 @@ const Page = async ({
                                     query: { ...baseQuery, page: page - 1 },
                                 }}
                             >
-                                Previous
+                                anterior
                             </Link>
                         ) : (
-                            <span>Previous</span>
+                            <span>anterior</span>
                         )}
                     </Button>
                     <Button
@@ -199,10 +199,10 @@ const Page = async ({
                                     query: { ...baseQuery, page: page + 1 },
                                 }}
                             >
-                                Next
+                                Próximo
                             </Link>
                         ) : (
-                            <span>Next</span>
+                            <span>Próximo</span>
                         )}
                     </Button>
                 </div>

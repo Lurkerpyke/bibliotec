@@ -37,21 +37,21 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             <ArrowLeft className="h-4 w-4" />
                         </Link>
                     </Button>
-                    <h1 className="text-2xl font-bold">Borrow Record Not Found</h1>
+                    <h1 className="text-2xl font-bold">Registro de Empréstimo Não Encontrado</h1>
                 </div>
                 <Card className="bg-gray-100">
                     <CardContent className="p-8 text-center">
                         <div className="flex flex-col items-center justify-center gap-4">
                             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
                             <p className="text-xl font-medium text-gray-700">
-                                Record not found
+                                Registro não encontrado
                             </p>
                             <p className="text-gray-500">
-                                The borrow record you're looking for doesn't exist or has been removed
+                                O registro de empréstimo que você procura não existe ou foi removido
                             </p>
                             <Button asChild className="mt-4">
                                 <Link href="/admin/borrow-records">
-                                    Back to Borrow Records
+                                    Voltar para Registros de Empréstimo
                                 </Link>
                             </Button>
                         </div>
@@ -64,17 +64,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
     const statusBadge = record.status === "RETURNED" ? (
         <Badge variant="default" className="bg-green-600 text-white">
             <CheckCircle className="h-4 w-4 mr-2" />
-            Returned
+            Devolvido
         </Badge>
     ) : record.isOverdue ? (
         <Badge variant="destructive">
             <Clock className="h-4 w-4 mr-2" />
-            Overdue
+            Atrasado
         </Badge>
     ) : (
         <Badge variant="secondary">
             <Clock className="h-4 w-4 mr-2" />
-            Active
+            Ativo
         </Badge>
     );
 
@@ -87,9 +87,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     </Link>
                 </Button>
                 <div>
-                    <h1 className="text-2xl font-bold text-blue-300">Borrow Record Details</h1>
+                    <h1 className="text-2xl font-bold text-blue-300">Detalhes do Empréstimo</h1>
                     <p className="text-gray-600">
-                        Detailed information about this borrowing activity
+                        Informações detalhadas sobre esta atividade de empréstimo
                     </p>
                 </div>
                 <div className="ml-auto">{statusBadge}</div>
@@ -101,7 +101,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Book className="h-5 w-5 text-blue-500" />
-                            Book Information
+                            Informações do Livro
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -115,7 +115,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                                 <div className="mt-2 flex flex-wrap gap-2">
                                     <Badge variant="outline" className="text-blue-800">{record.bookGenre}</Badge>
                                     <Badge variant="outline" className="text-blue-800">
-                                        {record.bookTotalCopies} copies
+                                        {record.bookTotalCopies} cópias
                                     </Badge>
                                 </div>
                             </div>
@@ -128,14 +128,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <User className="h-5 w-5 text-green-500" />
-                            Borrower Information
+                            Informações do Usuário
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-4">
                             <div>
                                 <div className="font-medium text-sm text-gray-500">
-                                    Full Name
+                                    Nome Completo
                                 </div>
                                 <div className="font-medium">{record.userName}</div>
                             </div>
@@ -150,7 +150,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
                                 <div>
                                     <div className="font-medium text-sm text-gray-500">
-                                        University ID
+                                        ID Universitário
                                     </div>
                                     <div className="font-medium">{record.userUniversityId}</div>
                                 </div>
@@ -158,7 +158,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
                             <div>
                                 <div className="font-medium text-sm text-gray-500">
-                                    Account Status
+                                    Status da Conta
                                 </div>
                                 <Badge
                                     variant={
@@ -181,7 +181,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Library className="h-5 w-5 text-amber-500" />
-                            Borrow Details
+                            Detalhes do Empréstimo
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -189,7 +189,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <div className="font-medium text-sm text-gray-500 flex items-center gap-1">
-                                        <Calendar className="h-4 w-4" /> Borrow Date
+                                        <Calendar className="h-4 w-4" /> Data do Empréstimo
                                     </div>
                                     <div className="font-medium">
                                         {format(record.borrowDate, "MMM dd, yyyy")}
@@ -198,7 +198,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
                                 <div>
                                     <div className="font-medium text-sm text-gray-500 flex items-center gap-1">
-                                        <Calendar className="h-4 w-4" /> Due Date
+                                        <Calendar className="h-4 w-4" /> Data de Vencimento
                                     </div>
                                     <div className="font-medium">
                                         {format(record.dueDate, "MMM dd, yyyy")}
@@ -209,7 +209,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             {record.returnDate && (
                                 <div>
                                     <div className="font-medium text-sm text-gray-500 flex items-center gap-1">
-                                        <Calendar className="h-4 w-4" /> Return Date
+                                        <Calendar className="h-4 w-4" /> Data de Devolução
                                     </div>
                                     <div className="font-medium">
                                         {format(record.returnDate, "MMM dd, yyyy")}
@@ -220,12 +220,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             {record.isOverdue && record.status !== "RETURNED" && (
                                 <Alert variant="destructive">
                                     <Clock className="h-5 w-5" />
-                                    <AlertTitle>Overdue!</AlertTitle>
+                                    <AlertTitle>Atrasado!</AlertTitle>
                                     <AlertDescription>
-                                        This book is {Math.ceil(
+                                        Este livro está {Math.ceil(
                                             (new Date().getTime() - record.dueDate.getTime()) /
                                             (1000 * 60 * 60 * 24)
-                                        )} days past due. Consider contacting the borrower.
+                                        )} dias atrasado. Considere entrar em contato com o usuário.
                                     </AlertDescription>
                                 </Alert>
                             )}
@@ -233,12 +233,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             {record.status === "BORROWED" && !record.isOverdue && (
                                 <Alert className="bg-blue-50 text-blue-700 border-blue-200">
                                     <Clock className="h-5 w-5 text-blue-700" />
-                                    <AlertTitle>Active Borrow</AlertTitle>
+                                    <AlertTitle>Empréstimo Ativo</AlertTitle>
                                     <AlertDescription>
-                                        Due in {Math.ceil(
+                                        Vence em {Math.ceil(
                                             (record.dueDate.getTime() - new Date().getTime()) /
                                             (1000 * 60 * 60 * 24)
-                                        )} days. Book should be returned by the due date.
+                                        )} dias. O livro deve ser devolvido até a data de vencimento.
                                     </AlertDescription>
                                 </Alert>
                             )}
@@ -246,9 +246,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             {record.status === "RETURNED" && (
                                 <Alert className="bg-green-50 text-green-700 border-green-200">
                                     <CheckCircle className="h-5 w-5 text-green-700" />
-                                    <AlertTitle>Return Completed</AlertTitle>
+                                    <AlertTitle>Devolução Concluída</AlertTitle>
                                     <AlertDescription>
-                                        This book was returned on {format(record.returnDate as Date, "MMM dd, yyyy")}.
+                                        Este livro foi devolvido em {format(record.returnDate as Date, "dd/MM/yyyy")}.
                                     </AlertDescription>
                                 </Alert>
                             )}
@@ -266,22 +266,22 @@ const Page = async ({ params }: { params: { id: string } }) => {
                         <input type="hidden" name="recordId" value={record.id} />
                         <Button type="submit">
                             <RefreshCw className="h-4 w-4 mr-2" />
-                            Mark as Returned
+                            Marcar como Devolvido
                         </Button>
                     </form>
                 ) : (
-                        <Button disabled variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
+                    <Button disabled variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
                         <CheckCircle className="h-4 w-4 mr-2" />
-                        Already Returned
+                        Já Devolvido
                     </Button>
                 )}
 
                 <Button asChild variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
-                    <Link href={`/books/${record.bookId}`}>View Book Details</Link>
+                    <Link href={`/books/${record.bookId}`}>Ver Detalhes do Livro</Link>
                 </Button>
                 <Button asChild variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">
                     <Link href={`/admin/users?search=${record.userEmail}`}>
-                        View Borrower Profile
+                        Ver Perfil do Usuário
                     </Link>
                 </Button>
             </div>

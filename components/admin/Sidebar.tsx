@@ -12,7 +12,7 @@ const Sidebar = ({ session }: { session: Session }) => {
     const pathname = usePathname();
 
     return (
-        <nav className="sticky top-0 h-screen w-20 md:w-70 transition-all duration-300 border-r border-slate-100 bg-white overflow-y-auto">
+        <nav className="sticky top-0 h-screen w-14 md:w-70 transition-all duration-300 border-r border-slate-100 bg-white overflow-y-auto">
             {/* Logo Section */}
             <div className="flex flex-col items-center md:items-start px-4 py-6">
                 <div className="flex items-center gap-3">

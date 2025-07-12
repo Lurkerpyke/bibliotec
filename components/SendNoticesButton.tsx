@@ -14,7 +14,7 @@ export function SendNoticesButton() {
             if (result.success) {
                 toast.success(result.message);
             } else {
-                toast.error(result.error || "Failed to send notices");
+                toast.error(result.error || "Falha ao enviar avisos");
             }
         });
     };
@@ -26,7 +26,7 @@ export function SendNoticesButton() {
             onClick={handleClick}
             disabled={isPending}
         >
-            {isPending ? "Sending..." : "Send Notices"}
+            {isPending ? "Enviando..." : "Enviar Avisos"}
         </Button>
     );
 }
