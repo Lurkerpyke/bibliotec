@@ -27,11 +27,11 @@ export default function SearchUsers() {
 
     return (
         <div className="relative">
-            <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Icons.search className="absolute left-1 md:left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
                 type="text"
                 placeholder="Pesquise usuários..."
-                className="pl-5 md:pl-10 pr-16   md:pr-24 text-black text-xs md:text-sm h-8 md:h-10 w-full"
+                className="pl-5 md:pl-10 pr-16 md:pr-24 text-black text-xs md:text-sm h-8 md:h-10 w-full"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />

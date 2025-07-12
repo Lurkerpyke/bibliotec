@@ -48,10 +48,10 @@ const Page = async ({
     const returnedRecords = records.filter(r => r.status === "RETURNED").length;
 
     return (
-        <div className="p-6 space-y-6">
+        <div className="md:p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">Registros de Empréstimo</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Registros de Empréstimo</h1>
                     <p className="text-gray-600 mt-2">
                         Gerencie e acompanhe todas as atividades de empréstimo de livros
                     </p>
@@ -106,14 +106,14 @@ const Page = async ({
                             <Input
                                 name="search"
                                 placeholder="Buscar por livro, usuário ou email..."
-                                className="pl-10"
+                                className="pl-10 text-xs md:text-sm"
                                 defaultValue={search}
                             />
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex flex-col md:flex-row gap-4">
                             <Select name="status" defaultValue={status}>
-                                <SelectTrigger className="w-[180px]">
+                                <SelectTrigger className="w-[180px] text-xs">
                                     <SelectValue placeholder="Filtrar por status" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -124,9 +124,9 @@ const Page = async ({
                                 </SelectContent>
                             </Select>
 
-                            <Button type="submit" variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200">Aplicar Filtros</Button>
+                            <Button type="submit" size="sm" variant='outline' className="bg-blue-100 text-blue-500 hover:bg-blue-200 text-xs md:text-sm">Aplicar Filtros</Button>
 
-                            <Button variant="outline" className="flex items-center gap-2">
+                            <Button variant="outline" className="flex items-center gap-2 text-xs md:text-sm">
                                 <Download className="h-4 w-4" />
                                 Exportar
                             </Button>
@@ -138,8 +138,8 @@ const Page = async ({
             {/* Records Table */}
             <Card className="bg-gray-100">
                 <CardHeader>
-                    <CardTitle>Histórico de Empréstimos</CardTitle>
-                    <CardDescription>
+                    <CardTitle className="text-xs md:text-sm">Histórico de Empréstimos</CardTitle>
+                    <CardDescription className="text-xs md:text-sm">
                         {records.length} registros encontrados
                     </CardDescription>
                 </CardHeader>
@@ -147,13 +147,13 @@ const Page = async ({
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="text-black">Livro</TableHead>
-                                <TableHead className="text-black">Usuário</TableHead>
-                                <TableHead className="text-black">Data do Empréstimo</TableHead>
-                                <TableHead className="text-black">Data de Vencimento</TableHead>
-                                <TableHead className="text-black">Data de Devolução</TableHead>
-                                <TableHead className="text-black">Status</TableHead>
-                                <TableHead className="text-right text-black">Ações</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Livro</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Usuário</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Data do Empréstimo</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Data de Vencimento</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Data de Devolução</TableHead>
+                                <TableHead className="text-black text-xs md:text-sm">Status</TableHead>
+                                <TableHead className="text-right text-black text-xs md:text-sm">Ações</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -168,7 +168,7 @@ const Page = async ({
                                             </TableCell>
                                             <TableCell>
                                                 <div>{record.userName}</div>
-                                                <div className="text-sm text-gray-500">
+                                                <div className="text-xs md:text-sm text-gray-500">
                                                     {record.userEmail}
                                                 </div>
                                             </TableCell>
@@ -193,7 +193,7 @@ const Page = async ({
                                                 )}
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                <Button size="sm" variant="outline" asChild>
+                                                <Button className="text-xs md:text-sm" size="sm" variant="outline" asChild>
                                                     <Link href={`/admin/borrow-records/${record.id}`}>
                                                         Ver Detalhes
                                                     </Link>
@@ -207,10 +207,10 @@ const Page = async ({
                                     <TableCell colSpan={7} className="text-center py-12">
                                         <div className="flex flex-col items-center justify-center gap-2">
                                             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-                                            <p className="text-gray-500 font-medium">
+                                            <p className="text-xs md:text-sm text-gray-500 font-medium">
                                                 Nenhum registro de empréstimo encontrado
                                             </p>
-                                            <p className="text-sm text-gray-400">
+                                            <p className="text-xs md:text-sm text-gray-400">
                                                 Tente ajustar sua busca ou os filtros
                                             </p>
                                         </div>

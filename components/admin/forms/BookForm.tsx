@@ -181,7 +181,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                 <FormLabel className="text-base font-medium text-slate-700">
                                     Imagem da Capa do Livro
                                 </FormLabel>
-                                <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm">
+                                <div className="rounded-xl bg-white p-4 border text-black border-slate-200 shadow-sm">
                                     <FileUpload
                                         type="image"
                                         accept="image/*"
@@ -244,7 +244,7 @@ const BookForm = ({ type, ...book }: Props) => {
                                 <FormLabel className="text-base font-medium text-slate-700">
                                     Trailer do Livro
                                 </FormLabel>
-                                <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm">
+                                <div className="rounded-xl bg-white p-4 text-black overflow-hidden border border-slate-200 shadow-sm">
                                     <FileUpload
                                         type="video"
                                         accept="video/*"

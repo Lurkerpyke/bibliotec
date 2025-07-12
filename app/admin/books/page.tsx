@@ -15,7 +15,7 @@ import Link from "next/link";
 import BookActions from "./BookActions";
 import BookStatusBadge from "./BookStatusBadge";
 import { Icons } from "@/components/icons";
-import SearchBooks from "./SearchBooks";
+import SearchBooks from "../../../components/admin/forms/SearchBooks";
 import { books } from "@/database/schema";
 import { db } from "@/database/drizzle";
 
