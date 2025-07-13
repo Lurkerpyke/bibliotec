@@ -1,11 +1,10 @@
 import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
 import { db } from "@/database/drizzle";
-import { books, users } from "@/database/schema";
+import { books } from "@/database/schema";
 import { auth } from "@/auth";
 import { desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
-import MobileNoticeWrapper from "@/components/MobileNoticeWrapper";
 
 
 
@@ -24,8 +23,6 @@ const Home = async () => {
         books={latestBooks.slice(1)}
         containerClassName="mt-28"
       />
-
-      <MobileNoticeWrapper />
     </>
   );
 };

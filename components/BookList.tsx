@@ -1,5 +1,4 @@
 import React from 'react'
-import BookOverview from './BookOverview';
 import BookCard from './BookCard';
 
 interface Props {
