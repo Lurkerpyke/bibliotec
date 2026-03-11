@@ -35,12 +35,12 @@ const Header = async () => {
               await signOut();
             }}
           >
-            <Button>Logout</Button>
+            <Button className="text-white hover:cursor-pointer">Logout</Button>
           </form>
         </li>
         <li>
           {isAdmin && 
-            <Button asChild>
+            <Button asChild className="text-white">
               <Link href='/admin'>
                 Admin
               </Link>

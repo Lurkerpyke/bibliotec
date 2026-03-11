@@ -3,8 +3,26 @@ import { db } from "@/database/drizzle";
 import { books, users, borrowRecords } from "@/database/schema";
 import { and, eq, isNull, sql } from "drizzle-orm";
 import emailjs from '@emailjs/nodejs';
+import { auth } from "@/auth";
 
 export const sendOverdueNotices = async () => {
+
+    const session = await auth();
+
+    if (!session?.user?.id) {
+        throw new Error("Unauthorized");
+    }
+
+    const user = await db
+        .select({ role: users.role })
+        .from(users)
+        .where(eq(users.id, session.user.id))
+        .limit(1);
+
+    if (user[0]?.role !== "ADMIN") {
+        throw new Error("Forbidden");
+    }
+
     try {
         // 1. Fetch overdue borrows with user/book details
         const overdueBorrows = await db
@@ -26,7 +44,7 @@ export const sendOverdueNotices = async () => {
             );
 
         if (overdueBorrows.length === 0) {
-            return { success: true, message: "No overdue books found" };
+            return { success: true, message: "Nenhum livro atrasado encontrado" };
         }
 
         // 2. Group by user to avoid multiple emails
@@ -65,16 +83,16 @@ export const sendOverdueNotices = async () => {
                 );
                 sentCount++;
             } catch (error) {
-                console.error(`Failed to send to ${email}:`, error);
+                console.error(`Falha ao enviar para ${email}:`, error);
             }
         }
 
         return {
             success: true,
-            message: `Sent ${sentCount}/${Object.keys(noticesByUser).length} notices`
+            message: `Enviadas ${sentCount}/${Object.keys(noticesByUser).length} notificações`
         };
     } catch (error) {
         console.error("Overdue notice error:", error);
-        return { success: false, error: "Failed to send notices" };
+        return { success: false, error: "Falha ao enviar notificações" };
     }
 };

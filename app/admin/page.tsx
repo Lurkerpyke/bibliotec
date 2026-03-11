@@ -9,8 +9,29 @@ import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { getDashboardData } from "@/lib/admin/actions/admin-dashboard";
 import { SendNoticesButton } from "@/components/SendNoticesButton";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
+import { eq } from "drizzle-orm";
 
 const Page = async () => {
+
+    const session = await auth();
+        
+    if (!session?.user?.id) redirect("/sign-in");
+      
+    const isAdmin = await db
+        .select({ isAdmin: users.role })
+        .from(users)
+        .where(eq(users.id, session.user.id))
+        .limit(1)
+        .then((res) => res[0]?.isAdmin === "ADMIN");
+    
+    if (!isAdmin) {
+        redirect("/");
+    }
+
     const {
         userCounts,
         bookStats,
@@ -331,7 +352,7 @@ const Page = async () => {
                                 <p className="text-xs md:text-sm text-gray-500 mt-1">Envie lembretes para livros atrasados</p>
                             </div>
                         </div>
-                        <SendNoticesButton />
+                        {isAdmin && <SendNoticesButton />}
                     </CardContent>
                 </Card>
             </div>
